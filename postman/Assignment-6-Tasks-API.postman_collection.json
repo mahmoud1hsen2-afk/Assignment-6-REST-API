@@ -1,0 +1,107 @@
+{
+  "info": {
+    "name": "Assignment 6 - Tasks REST API",
+    "_postman_id": "b8f5c1a2-7d4e-4f6b-9a10-123456789abc",
+    "description": "Requests demonstrating all five CRUD operations and validation.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "taskId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "List all tasks",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/tasks"
+      }
+    },
+    {
+      "name": "Get one task",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/tasks/{{taskId}}"
+      }
+    },
+    {
+      "name": "Create task",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Finish REST API assignment\",\n  \"description\": \"Implement all CRUD routes\",\n  \"completed\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/tasks"
+      }
+    },
+    {
+      "name": "Update task",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Finish REST API assignment\",\n  \"description\": \"All routes are implemented\",\n  \"completed\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/tasks/{{taskId}}"
+      }
+    },
+    {
+      "name": "Delete task",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/tasks/{{taskId}}"
+      }
+    },
+    {
+      "name": "Validation error example",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/tasks"
+      }
+    }
+  ]
+}
